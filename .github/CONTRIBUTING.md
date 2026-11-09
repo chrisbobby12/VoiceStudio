@@ -548,6 +548,10 @@ test-only PR. Docker Hub overview edits still publish through the small
     and the optional local-model smoke test never acquire models or use the network.
     The VC++ Redistributable is a manual prerequisite; opted-in Windows ROCm
     source setup checks it locally and stops when it is missing.
+  - **Dependency repair for an existing Python the user selected**
+    (owner-approved 2026-11-09): after the user reviews the plan and confirms,
+    `pip install` of the listed missing packages from PyPI into that
+    interpreter (`electron/src/main/ipc.ts`).
   - **Optional engine installs the user starts** (owner-approved 2026-11-07):
     clicking Install or Repair on an optional engine fetches its upstream
     source from GitHub (a shallow clone of the branch tip, then the reviewed
@@ -572,8 +576,10 @@ test-only PR. Docker Hub overview edits still publish through the small
     (`backend/api/routers/community.py`); the voice-preview gallery's signed
     downloads from `omnivoice-gallery` GitHub Releases, only after it is turned
     on in Settings (`backend/services/gallery.py`).
-  - **Packaged-app update checks** against GitHub Releases; downloads wait for
-    the user (`electron/src/main/updater.ts`).
+  - **Packaged-app update checks** against GitHub Releases, and the background
+    download of a found update from the same release (on by default; Settings
+    → Updates → Download updates automatically turns it off, so downloads wait
+    for the user) (`electron/src/main/updater.ts`).
   - **yt-dlp updates** from PyPI, only when the user clicks update
     (`backend/services/media_tools.py`).
   - **VoiceStudio Cloud account features, only after the user turns them on**
